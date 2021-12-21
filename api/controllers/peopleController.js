@@ -9,7 +9,7 @@ const list = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: 'People found!',
-            data: JSON.parse(JSON.stringify(response.data).replaceAll("https://swapi.dev",""))
+            data: JSON.parse(JSON.stringify(response.data).replaceAll("https://swapi.dev/api",""))
         })
     } catch (error) {
         return res.status(500).json({
@@ -28,7 +28,7 @@ const get = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: 'Person found!',
-            data: JSON.parse(JSON.stringify(response.data).replaceAll("https://swapi.dev",""))
+            data: JSON.parse(JSON.stringify(response.data).replaceAll("https://swapi.dev/api",""))
         })
     } catch (error) {
         return res.status(500).json({
