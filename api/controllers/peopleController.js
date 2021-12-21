@@ -24,7 +24,18 @@ const list = async (req, res) => {
 const get = async (req, res) => {
     let url = "/people/"+req.params.id;
     try {
-        const response = await axios.get(url);
+        const response  = await axios.get(url);
+        const data = await response.data;
+        const homeWorld = await axios.get(data.homeworld);
+        data.homeworld = homeWorld.data;
+        for(let i=0; i< data.films.length; i++){
+            const res = await axios.get(data.films[i]);
+            data.films[i] = res.data;
+        }
+        for(let i=0; i< data.species.length; i++){
+            const res = await axios.get(data.films[i]);
+            data.species[i] = res.data;
+        }
         return res.status(200).json({
             success: true,
             message: 'Person found!',
@@ -37,6 +48,16 @@ const get = async (req, res) => {
             data: null
         })
     }
+};
+
+let processUrls;
+processUrls = async (urls) => {
+    let unresolved;
+    unresolved = urls.forEach(async function (url, index) {
+        const {data} = await axios.get(url);
+        urls[index] = data;
+    });
+    return urls;
 };
 
 module.exports = {
