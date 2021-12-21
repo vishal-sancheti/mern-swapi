@@ -9,6 +9,9 @@ router.get('/', (req,res) => {
     });
 });
 
+const peopleRouter = require('./routes/peopleRoutes');
+router.use('/people',peopleRouter);
+
 //404 Error Handling
 router.use(function(req, res) {
     res.status(404).json({
