@@ -8,7 +8,7 @@ const list = async (req, res) => {
     try {
         const response = await axios.get(url,{ params: req.query});
         let data = response.data;
-        data = JSON.parse(JSON.stringify(data).replaceAll("https://swapi.dev/api",""));
+        data = JSON.parse(JSON.stringify(data).replace(new RegExp("https://swapi.dev/api", 'g'),""))
         data.results = data.results.map((result) => ({
             ..._.pick(result,['name','url'])
         }));
@@ -60,7 +60,7 @@ const get = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: 'Person found!',
-            data: JSON.parse(JSON.stringify(data).replaceAll("https://swapi.dev/api",""))
+            data: JSON.parse(JSON.stringify(data).replace(new RegExp("https://swapi.dev/api", 'g'),""))
         });
     } catch (error) {
         console.log(error);
