@@ -29,7 +29,7 @@ export default function Person() {
                     <Container>
                         <Row>
                             <Col>
-                                <h1>Person form Star Wars</h1>
+                                <h1>Person from Star Wars</h1>
                             </Col>
                         </Row>
                         <hr/>

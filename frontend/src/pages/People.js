@@ -30,7 +30,7 @@ export default function People() {
                     <Container className="py-3">
                         <Row>
                             <Col>
-                                <h1>People form Star Wars</h1>
+                                <h1>People from Star Wars</h1>
                             </Col>
                         </Row>
                         <Row>
