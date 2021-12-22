@@ -40,7 +40,7 @@ const get = async (req, res) => {
             data.films[i] = res.data;
         }
         for(let i=0; i< data.species.length; i++){
-            const res = await axios.get(data.films[i]);
+            const res = await axios.get(data.species[i]);
             data.species[i] = res.data;
         }
 
@@ -61,8 +61,9 @@ const get = async (req, res) => {
             success: true,
             message: 'Person found!',
             data: JSON.parse(JSON.stringify(data).replaceAll("https://swapi.dev/api",""))
-        })
+        });
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             success: false,
             message: error.message,
