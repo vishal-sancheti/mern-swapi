@@ -71,16 +71,6 @@ const get = async (req, res) => {
     }
 };
 
-let processUrls;
-processUrls = async (urls) => {
-    let unresolved;
-    unresolved = urls.forEach(async function (url, index) {
-        const {data} = await axios.get(url);
-        urls[index] = data;
-    });
-    return urls;
-};
-
 module.exports = {
     list,
     get
